@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run basic validation
+        run: |
+          node --check src/app.js
+          test -f README.md
+          echo "CI passed"
